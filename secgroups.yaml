@@ -41,18 +41,12 @@ Resources:
       VpcId: !Ref VPC
       SecurityGroupIngress:
         -
-          SourceSecurityGroupId: 
-            Fn::GetAtt:
-            - PgpoolFirewall
-            - GroupId
+          CidrIp: 0.0.0.0/0
           IpProtocol: tcp
           ToPort: "3306"
           FromPort: "3306"
         -
-          SourceSecurityGroupId: 
-            Fn::GetAtt:
-            - PgpoolFirewall
-            - GroupId
+          CidrIp: 0.0.0.0/0
           IpProtocol: tcp
           ToPort: "5432"
           FromPort: "5432"

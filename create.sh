@@ -72,6 +72,6 @@ aws cloudformation create-stack --stack-name $stackname \
     ParameterKey=DatabaseUser,ParameterValue="pgpooluser" \
     ParameterKey=DatabasePassword,ParameterValue="pgp0o1Cred" \
     ParameterKey=DbInstanceSize,ParameterValue="db.r4.large" \
-    ParameterKey=keyname,ParameterValue="rdaws-sandbox" \
+    ParameterKey=keyname,ParameterValue="whe" \
     --tags Key=Project,Value=pgpoolblog \
     --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM

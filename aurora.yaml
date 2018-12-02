@@ -85,23 +85,26 @@ Resources:
       Tags:
         - Key: Project
           Value: !Ref ProjectTag
-  DBAuroraTwo:
-    Type : "AWS::RDS::DBInstance"
-    DependsOn: DBParamGroup
+  DBAuroraCluster2:
+    Type: "AWS::RDS::DBCluster"
+    DependsOn: DBClusterParams
     Properties:
-      DBClusterIdentifier: !Ref DBAuroraCluster
+      DatabaseName: !Ref DatabaseName
       Engine: aurora-postgresql
-      DBInstanceClass: !Ref DbInstanceSize
+      MasterUsername: !Ref DatabaseUser
+      MasterUserPassword: !Ref DatabasePassword
       DBSubnetGroupName: !Ref DBSubnets
-      DBParameterGroupName: !Ref DBParamGroup
+      DBClusterParameterGroupName: !Ref DBClusterParams
+      VpcSecurityGroupIds: 
+        - !Ref DBFirewall
       Tags:
         - Key: Project
           Value: !Ref ProjectTag
-  DBAuroraThree:
+  DBAurora2:
     Type : "AWS::RDS::DBInstance"
     DependsOn: DBParamGroup
     Properties:
-      DBClusterIdentifier: !Ref DBAuroraCluster
+      DBClusterIdentifier: !Ref DBAuroraCluster2
       Engine: aurora-postgresql
       DBInstanceClass: !Ref DbInstanceSize
       DBSubnetGroupName: !Ref DBSubnets
@@ -145,4 +148,4 @@ Outputs:
     Value: !GetAtt DBAuroraCluster.Endpoint.Address
   DBReadEndpoint:
     Description: Aurora cluster read endpoint
-    Value: !GetAtt DBAuroraCluster.ReadEndpoint.Address
+    Value: !GetAtt DBAuroraCluster2.Endpoint.Address

@@ -259,7 +259,7 @@ Resources:
                 backend_port0 = 3306
                 backend_weight0 = 1
                 backend_data_directory0 = '/var/lib/pgsql/data'
-                backend_flag0 = 'ALWAYS_MASTER'
+                backend_flag0 = 'ALLOW_TO_FAILOVER'
                 backend_hostname1 = ${ReaderEndpoint}
                 backend_port1 = 3306
                 backend_weight1 = 2
@@ -290,7 +290,7 @@ Resources:
                 logdir = '/var/log/pgpool'
                 connection_cache = on
                 reset_query_list = 'ABORT; DISCARD ALL'
-                replication_mode = off
+                replication_mode = on
                 replicate_select = off
                 insert_lock = on
                 lobj_lock_table = ''
@@ -303,8 +303,7 @@ Resources:
                 database_redirect_preference_list = ''
                 app_name_redirect_preference_list = ''
                 allow_sql_comments = off
-                master_slave_mode = on
-                master_slave_sub_mode = 'stream'
+                master_slave_mode = off
                 sr_check_period = 0
                 sr_check_user = 'nobody'
                 sr_check_password = ''
